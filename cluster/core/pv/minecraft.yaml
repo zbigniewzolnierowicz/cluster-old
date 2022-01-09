@@ -2,9 +2,10 @@
 apiVersion: v1
 kind: PersistentVolumeClaim
 metadata:
-  name: nfs-downloads-pvc
-  namespace: media
+  name: nfs-minecraft-pvc
+  namespace: games
 spec:
+  storageClassName: local-path
   accessModes:
     - ReadWriteMany
   resources:
@@ -14,17 +15,17 @@ spec:
 apiVersion: v1
 kind: PersistentVolume
 metadata:
-  name: nfs-downloads-pv
-  namespace: media
+  name: nfs-minecraft-pv
+  namespace: games
 spec:
   capacity:
     storage: 4Ti
   nfs:
     server: 192.168.1.101
-    path: "/mnt/eldorado/Base/Downloads"
+    path: "/mnt/eldorado/Base/Games/Minecraft"
   accessModes:
     - ReadWriteMany
   claimRef:
     kind: PersistentVolumeClaim
-    namespace: media
-    name: nfs-downloads-pvc
+    namespace: games
+    name: nfs-minecraft-pvc

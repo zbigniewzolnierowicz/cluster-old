@@ -2,9 +2,10 @@
 apiVersion: v1
 kind: PersistentVolumeClaim
 metadata:
-  name: nfs-downloads-pvc
+  name: nfs-transcode-pvc
   namespace: media
 spec:
+  storageClassName: local-path
   accessModes:
     - ReadWriteMany
   resources:
@@ -14,17 +15,17 @@ spec:
 apiVersion: v1
 kind: PersistentVolume
 metadata:
-  name: nfs-downloads-pv
+  name: nfs-transcode-pv
   namespace: media
 spec:
   capacity:
     storage: 4Ti
   nfs:
     server: 192.168.1.101
-    path: "/mnt/eldorado/Base/Downloads"
+    path: "/mnt/eldorado/Base/Media/Transcode"
   accessModes:
     - ReadWriteMany
   claimRef:
     kind: PersistentVolumeClaim
     namespace: media
-    name: nfs-downloads-pvc
+    name: nfs-transcode-pvc
