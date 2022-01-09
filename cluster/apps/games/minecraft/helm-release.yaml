@@ -1,0 +1,71 @@
+apiVersion: helm.toolkit.fluxcd.io/v2beta1
+kind: HelmRelease
+metadata:
+  name: minecraft
+  namespace: games
+spec:
+  interval: 5m
+  chart:
+    spec:
+      # renovate: registryUrl=https://itzg.github.io/minecraft-server-charts/
+      chart: minecraft
+      version: '3.6.1'
+      sourceRef:
+        kind: HelmRepository
+        name: minecraft-server-charts
+        namespace: flux-system
+      interval: 1m
+  values:
+    image: itzg/minecraft-server
+    imageTag: java8
+    strategyType: Recreate
+    persistence:
+      dataDir:
+        enabled: true
+        existingClaim: nfs-minecraft-pvc
+    resources:
+      requests:
+        memory: 4Gi
+        cpu: 1000m
+      limits:
+        memory: 4Gi
+    livenessProbe:
+      initialDelaySeconds: 300
+      periodSeconds: 5
+      failureThreshold: 10
+      successThreshold: 1
+      timeoutSeconds: 1
+    readinessProbe:
+      initialDelaySeconds: 300
+      periodSeconds: 5
+      failureThreshold: 10
+      successThreshold: 1
+      timeoutSeconds: 1
+    startupProbe:
+      enabled: false
+      failureThreshold: 30
+      periodSeconds: 10
+    extraEnv:
+      ENABLE_AUTOPAUSE: FALSE
+      ALLOW_FLIGHT: TRUE
+    minecraftServer:
+      eula: "TRUE"
+      version: "1.16.5"
+      type: "CURSEFORGE"
+      forceReDownload: false
+      cfServerMod: srvr.zip
+      jvmOpts: "-Xms4G -Xmx4G -XX:+UseG1GC -XX:+ParallelRefProcEnabled -XX:MaxGCPauseMillis=200 -XX:+UnlockExperimentalVMOptions -XX:+DisableExplicitGC -XX:+AlwaysPreTouch -XX:G1NewSizePercent=30 -XX:G1MaxNewSizePercent=40 -XX:G1HeapRegionSize=8M -XX:G1ReservePercent=20 -XX:G1HeapWastePercent=5 -XX:G1MixedGCCountTarget=4 -XX:InitiatingHeapOccupancyPercent=15 -XX:G1MixedGCLiveThresholdPercent=90 -XX:G1RSetUpdatingPauseTimePercent=5 -XX:SurvivorRatio=32 -XX:+PerfDisableSharedMem -XX:MaxTenuringThreshold=1 -Dusing.aikars.flags=https://mcflags.emc.gs -Daikars.new.flags=true -Dlog4j2.formatMsgNoLookups=true"
+      memory: 4092M
+      difficulty: normal
+      maxTickTime: -1
+      serviceType: LoadBalancer
+      gameMode: survival
+      icon: https://www.freeiconspng.com/uploads/minecraft-server-icon-23.png
+      loadBalancerIP: 192.168.1.201
+      ops: SW33
+      rcon:
+        # If you enable this, make SURE to change your password below.
+        enabled: true
+        port: 25575
+        password: "password"
+        serviceType: ClusterIP
