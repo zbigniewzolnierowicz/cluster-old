@@ -8,3 +8,4 @@ resources:
   - system-upgrade
   - intel
   - storage
+  - pv

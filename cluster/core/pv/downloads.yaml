@@ -1,0 +1,30 @@
+---
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: nfs-downloads-pvc
+  namespace: media
+spec:
+  accessModes:
+    - ReadWriteOnce
+  resources:
+    requests:
+      storage: 4Ti
+---
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: nfs-downloads-pv
+  namespace: media
+spec:
+  capacity:
+    storage: 4Ti
+  nfs:
+    server: "192.168.1.51"
+    path: "/mnt/eldorado/Base/Downloads"
+  accessModes:
+    - ReadWriteOnce
+  claimRef:
+    kind: PersistentVolumeClaim
+    namespace: default
+    name: nfs-downloads-pvc
