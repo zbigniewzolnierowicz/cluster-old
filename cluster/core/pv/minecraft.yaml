@@ -21,7 +21,7 @@ spec:
   capacity:
     storage: 4Ti
   nfs:
-    server: 192.168.1.51
+    server: "${TRUENAS_ADDR}"
     path: "/mnt/eldorado/Base/Games/Minecraft"
   accessModes:
     - ReadWriteMany
