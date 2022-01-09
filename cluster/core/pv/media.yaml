@@ -21,7 +21,7 @@ spec:
   capacity:
     storage: 4Ti
   nfs:
-    server: 192.168.1.101
+    server: 192.168.1.51
     path: "/mnt/eldorado/Base/Media"
   accessModes:
     - ReadWriteMany
