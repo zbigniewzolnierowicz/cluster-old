@@ -5,6 +5,7 @@ metadata:
   name: deluge-config
   namespace: media
 spec:
+  sstorageClassName: nfs-client
   accessModes:
     - ReadWriteOnce
   resources:
