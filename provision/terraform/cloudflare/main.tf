@@ -117,3 +117,25 @@ resource "cloudflare_record" "deluge" {
   type    = "CNAME"
   ttl     = 1
 }
+
+resource "cloudflare_record" "minecraft" {
+  name    = "mc"
+  zone_id = lookup(data.cloudflare_zones.domain.zones[0], "id")
+  value   = "ipv4.${data.sops_file.cloudflare_secrets.data["cloudflare_domain"]}"
+  proxied = false
+  type    = "CNAME"
+  ttl     = 1
+}
+
+resource "cloudflare_record" "minecraft_srv" {
+  name    = "mc"
+  zone_id = lookup(data.cloudflare_zones.domain.zones[0], "id")
+  type    = "SRV"
+  ttl     = 1
+  data {
+    service = "_minecraft"
+    proto = "_tcp"
+    port = 25565
+    target = "mc.${data.sops_file.cloudflare_secrets.data["cloudflare_domain"]}"
+  }
+}
