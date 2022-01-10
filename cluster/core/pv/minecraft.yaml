@@ -5,7 +5,6 @@ metadata:
   name: nfs-minecraft-pvc
   namespace: games
 spec:
-  storageClassName: local-path
   accessModes:
     - ReadWriteMany
   resources:
