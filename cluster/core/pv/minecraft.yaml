@@ -10,6 +10,7 @@ spec:
   resources:
     requests:
       storage: 4Ti
+  volumeName: nfs-minecraft-pv
 ---
 apiVersion: v1
 kind: PersistentVolume
@@ -24,7 +25,4 @@ spec:
     path: "/mnt/eldorado/Base/Games/Minecraft"
   accessModes:
     - ReadWriteMany
-  claimRef:
-    kind: PersistentVolumeClaim
-    namespace: games
-    name: nfs-minecraft-pvc
+  persistentVolumeReclaimPolicy: Retain

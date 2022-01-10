@@ -10,6 +10,7 @@ spec:
   resources:
     requests:
       storage: 4Ti
+  volumeName: nfs-transcode-pv
 ---
 apiVersion: v1
 kind: PersistentVolume
@@ -24,7 +25,4 @@ spec:
     path: "/mnt/eldorado/Base/Media/Transcode"
   accessModes:
     - ReadWriteMany
-  claimRef:
-    kind: PersistentVolumeClaim
-    namespace: media
-    name: nfs-transcode-pvc
+  persistentVolumeReclaimPolicy: Retain
