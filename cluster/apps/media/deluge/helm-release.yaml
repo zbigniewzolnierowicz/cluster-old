@@ -28,7 +28,7 @@ spec:
         existingClaim: "deluge-config"
       downloads:
         enabled: true
-        existingClaim: "downloads-claim"
+        existingClaim: "nfs-downloads-pvc"
     ingress:
       main:
         enabled: true
