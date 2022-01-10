@@ -10,6 +10,7 @@ spec:
   resources:
     requests:
       storage: 4Ti
+  volumeName: nfs-downloads-pv
 ---
 apiVersion: v1
 kind: PersistentVolume
@@ -24,7 +25,4 @@ spec:
     path: "/mnt/eldorado/Base/Downloads"
   accessModes:
     - ReadWriteMany
-  claimRef:
-    kind: PersistentVolumeClaim
-    namespace: media
-    name: nfs-downloads-pvc
+  persistentVolumeReclaimPolicy: Retain
