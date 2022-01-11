@@ -52,6 +52,7 @@ spec:
       supplementalGroups:
       - 44
       - 109
+      - 1000
     resources:
       requests:
         gpu.intel.com/i915: 1
