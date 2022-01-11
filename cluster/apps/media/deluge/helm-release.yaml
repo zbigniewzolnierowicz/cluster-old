@@ -19,7 +19,7 @@ spec:
   values:
     image:
       repository: linuxserver/deluge
-      tag: version-2.0.3-2201906121747ubuntu18.04.1
+      tag: "2.0.5"
     env:
       TZ: Europe/Warsaw
     persistence:
