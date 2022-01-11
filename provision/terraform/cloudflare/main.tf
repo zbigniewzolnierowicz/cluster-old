@@ -139,3 +139,12 @@ resource "cloudflare_record" "minecraft_srv" {
     target = "mc.${data.sops_file.cloudflare_secrets.data["cloudflare_domain"]}"
   }
 }
+
+resource "cloudflare_record" "plex" {
+  name    = "plex"
+  zone_id = lookup(data.cloudflare_zones.domain.zones[0], "id")
+  value   = "ipv4.${data.sops_file.cloudflare_secrets.data["cloudflare_domain"]}"
+  proxied = false
+  type    = "CNAME"
+  ttl     = 1
+}
