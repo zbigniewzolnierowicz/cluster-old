@@ -24,6 +24,9 @@ spec:
       TZ: Europe/Warsaw
       PUID: 1000
       PGID: 1000
+    podSecurityContext:
+      supplementalGroups:
+      - 1000
     persistence:
       config:
         enabled: true
