@@ -19,10 +19,11 @@ spec:
     image:
       repository: "ghcr.io/k8s-at-home/radarr"
       tag: "v3.2.2.5080"
+    podSecurityContext:
+      supplementalGroups:
+      - 1000
     env:
       TZ: Europe/Warsaw
-      PUID: 1000
-      PGID: 1000
     metrics:
       enabled: false
     persistence:

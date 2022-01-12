@@ -21,8 +21,9 @@ spec:
       tag: "v3.0.6.1342"
     env:
       TZ: Europe/Warsaw
-      PUID: 1000
-      PGID: 1000
+    podSecurityContext:
+      supplementalGroups:
+      - 1000
     metrics:
       enabled: false
     persistence:
