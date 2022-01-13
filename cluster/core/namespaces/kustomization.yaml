@@ -6,3 +6,4 @@ resources:
   - networking.yaml
   - storage.yaml
   - media.yaml
+  - monitoring.yaml
