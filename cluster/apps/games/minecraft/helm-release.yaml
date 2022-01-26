@@ -17,7 +17,7 @@ spec:
       interval: 1m
   values:
     image: itzg/minecraft-server
-    imageTag: java8
+    imageTag: java17
     strategyType: Recreate
     persistence:
       dataDir:
