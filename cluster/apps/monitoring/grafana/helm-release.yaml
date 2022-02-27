@@ -83,6 +83,10 @@ spec:
           gnetId: 13665
           revision: 1
           datasource: Prometheus
+        node-exporter:
+          gnetId: 1860
+          revision: 26
+          datasource: Prometheus
     sidecar:
       dashboards:
         enabled: true
