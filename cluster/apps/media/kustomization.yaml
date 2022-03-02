@@ -4,5 +4,5 @@ resources:
   - deluge
   - plex
   - prowlarr
-  - sonarr
-  - radarr
+  # - sonarr
+  # - radarr
