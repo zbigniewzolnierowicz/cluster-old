@@ -83,6 +83,11 @@ spec:
           gnetId: 13665
           revision: 1
           datasource: Prometheus
+        # Ref: https://grafana.com/grafana/dashboards/1860
+        node-exporter:
+          gnetId: 1860
+          revision: 1
+          datasource: Prometheus
     sidecar:
       dashboards:
         enabled: true
