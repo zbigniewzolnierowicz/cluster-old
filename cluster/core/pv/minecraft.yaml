@@ -18,6 +18,7 @@ metadata:
   name: nfs-minecraft-pv
   namespace: games
 spec:
+  storageClassName: local-path
   capacity:
     storage: 4Ti
   nfs:

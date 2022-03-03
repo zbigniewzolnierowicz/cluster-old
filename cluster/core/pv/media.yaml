@@ -18,6 +18,7 @@ metadata:
   name: nfs-media-pv
   namespace: media
 spec:
+  storageClassName: local-path
   capacity:
     storage: 4Ti
   nfs:
