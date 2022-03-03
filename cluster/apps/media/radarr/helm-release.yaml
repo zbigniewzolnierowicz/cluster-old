@@ -59,6 +59,7 @@ spec:
             secretName: "radarr-tls"
       api:
         enabled: true
+        ingressClassName: "traefik"
         nameSuffix: "api"
         annotations:
           cert-manager.io/cluster-issuer: "letsencrypt-production"

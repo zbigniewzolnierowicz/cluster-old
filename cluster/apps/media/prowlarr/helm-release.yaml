@@ -41,6 +41,7 @@ spec:
     ingress:
       main:
         enabled: true
+        ingressClassName: "traefik"
         annotations:
           cert-manager.io/cluster-issuer: "letsencrypt-production"
           hajimari.io/enable: "true"
@@ -57,6 +58,7 @@ spec:
             secretName: "prowlarr-tls"
       api:
         enabled: true
+        ingressClassName: "traefik"
         nameSuffix: "api"
         annotations:
           traefik.ingress.kubernetes.io/router.entrypoints: "websecure"
