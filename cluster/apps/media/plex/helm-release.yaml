@@ -34,8 +34,6 @@ spec:
         tls:
           - hosts:
               - "plex.${SECRET_DOMAIN}"
-              - "*.plex.direct"
-              - "plex.direct"
             secretName: "plex-tls"
     env:
       LIBVA_DRIVER_NAME: i965
