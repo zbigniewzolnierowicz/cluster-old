@@ -7,3 +7,4 @@ resources:
   - storage.yaml
   - media.yaml
   - monitoring.yaml
+  - games.yaml
