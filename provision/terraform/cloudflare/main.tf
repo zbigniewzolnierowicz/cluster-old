@@ -211,3 +211,12 @@ resource "cloudflare_record" "loki" {
   type    = "CNAME"
   ttl     = 1
 }
+
+resource "cloudflare_record" "lidarr" {
+  name    = "lidarr"
+  zone_id = lookup(data.cloudflare_zones.domain.zones[0], "id")
+  value   = "ipv4.${data.sops_file.cloudflare_secrets.data["cloudflare_domain"]}"
+  proxied = false
+  type    = "CNAME"
+  ttl     = 1
+}
