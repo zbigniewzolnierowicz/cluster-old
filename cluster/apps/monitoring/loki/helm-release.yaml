@@ -28,7 +28,9 @@ spec:
         hajimari.io/icon: "television-classic"
         traefik.ingress.kubernetes.io/router.entrypoints: "websecure"
       hosts:
-        - "loki.${SECRET_DOMAIN}"
+        - host: "loki.${SECRET_DOMAIN}"
+          paths:
+            - /
       tls:
         - hosts:
             - "loki.${SECRET_DOMAIN}"
