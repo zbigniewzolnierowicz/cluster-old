@@ -29,10 +29,10 @@ spec:
           url: https://pi.hole
         - name: Proxmox
           icon: server-network
-          url: https://nas.homelab.local:8006
+          url: https://vm.homelab.local:8006
         - name: TrueNAS
           icon: nas
-          url: https://nas.homelab.local:8006
+          url: https://nas.homelab.local
       groups:
         - name: Media
           links:
