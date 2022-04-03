@@ -23,6 +23,16 @@ spec:
     hajimari:
       defaultEnable: true
       name: "you"
+      customApps:
+        - name: PiHole
+          icon: raspberry-pi
+          url: https://pi.hole
+        - name: Proxmox
+          icon: server-network
+          url: https://nas.homelab.local:8006
+        - name: TrueNAS
+          icon: nas
+          url: https://nas.homelab.local:8006
       groups:
         - name: Media
           links:
