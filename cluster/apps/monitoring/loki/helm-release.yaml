@@ -52,14 +52,3 @@ spec:
           secret_access_key: "${SECRET_MINIO_SECRET_KEY}"
           s3forcepathstyle: true
           insecure: true
-      ruler:
-        storage:
-          type: local
-          local:
-            directory: /rules
-        rule_path: /tmp/scratch
-        alertmanager_url: http://kube-prometheus-stack-alertmanager:9093
-        ring:
-          kvstore:
-            store: inmemory
-        enable_api: true
