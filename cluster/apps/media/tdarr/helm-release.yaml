@@ -18,13 +18,13 @@ spec:
   values:
     image:
       repository: "ghcr.io/haveagitgat/tdarr"
-      tag: "2.00.10"
+      tag: "2.00.16.3"
     node:
       enabled: true
       id: "node"
       image:
         repository: "ghcr.io/haveagitgat/tdarr_node"
-        tag: "2.00.10"
+        tag: "2.00.16.1"
     podSecurityContext:
       supplementalGroups:
       - 1000
