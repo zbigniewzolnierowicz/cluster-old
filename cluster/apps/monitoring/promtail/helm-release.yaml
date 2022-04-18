@@ -17,6 +17,11 @@ spec:
         namespace: flux-system
       interval: 5m
   values:
+    image:
+      registry: docker.io
+      repository: grafana/promtail
+      tag: main-d1aff7b
+      pullPolicy: IfNotPresent
     config:
       lokiAddress: http://loki:3100/loki/api/v1/push
       snippets:
