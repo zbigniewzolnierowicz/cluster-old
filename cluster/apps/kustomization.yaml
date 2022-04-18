@@ -6,5 +6,5 @@ resources:
   - monitoring
   - networking
   - system-upgrade
-  - media
+  # - media
   # - games
