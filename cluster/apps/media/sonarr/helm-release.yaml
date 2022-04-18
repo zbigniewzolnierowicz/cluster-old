@@ -35,7 +35,7 @@ spec:
       media:
         enabled: true
         type: "pvc"
-        existingClaim: "nfs-media-new-pvc"
+        existingClaim: "nfs-media-pvc"
       downloads:
         enabled: true
         type: "pvc"
