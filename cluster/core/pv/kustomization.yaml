@@ -4,4 +4,4 @@ resources:
   - downloads.yaml
   - media.yaml
   - transcode.yaml
-  - minecraft.yaml
+  # - minecraft.yaml
