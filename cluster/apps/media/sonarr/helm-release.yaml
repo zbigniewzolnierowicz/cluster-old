@@ -24,6 +24,7 @@ spec:
     podSecurityContext:
       supplementalGroups:
       - 1000
+      - 1002
     metrics:
       enabled: false
     persistence:

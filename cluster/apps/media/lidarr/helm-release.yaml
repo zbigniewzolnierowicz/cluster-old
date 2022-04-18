@@ -22,6 +22,7 @@ spec:
     podSecurityContext:
       supplementalGroups:
       - 1000
+      - 1002
     env:
       TZ: Europe/Warsaw
     metrics:

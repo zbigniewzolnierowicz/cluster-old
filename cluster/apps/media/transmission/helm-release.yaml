@@ -27,6 +27,7 @@ spec:
     podSecurityContext:
       supplementalGroups:
       - 1000
+      - 1002
     persistence:
       config:
         enabled: true

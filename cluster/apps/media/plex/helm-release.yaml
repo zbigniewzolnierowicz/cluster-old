@@ -54,6 +54,7 @@ spec:
       - 44
       - 109
       - 1000
+      - 1002
     resources:
       requests:
         gpu.intel.com/i915: 1
