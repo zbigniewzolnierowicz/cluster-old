@@ -2,7 +2,7 @@
 apiVersion: v1
 kind: PersistentVolumeClaim
 metadata:
-  name: tdarr-config
+  name: flood-config
   namespace: media
 spec:
   storageClassName: nfs-client

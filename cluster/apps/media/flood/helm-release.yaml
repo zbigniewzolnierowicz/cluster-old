@@ -1,15 +1,15 @@
 apiVersion: helm.toolkit.fluxcd.io/v2beta1
 kind: HelmRelease
 metadata:
-  name: tdarr
+  name: flood
   namespace: media
 spec:
   interval: 5m
   chart:
     spec:
       # renovate: registryUrl=https://k8s-at-home.com/charts/
-      chart: tdarr
-      version: '4.3.0'
+      chart: rtorrent-flood
+      version: '8.2.0'
       sourceRef:
         kind: HelmRepository
         name: k8s-at-home-charts
@@ -17,33 +17,23 @@ spec:
       interval: 1m
   values:
     image:
-      repository: "ghcr.io/haveagitgat/tdarr"
-      tag: "2.00.16.3"
-    node:
-      enabled: true
-      id: "node"
-      image:
-        repository: "ghcr.io/haveagitgat/tdarr_node"
-        tag: "2.00.16.1"
+      repository: "jesec/rtorrent-flood"
+      tag: "latest@sha256:f0c894ec459e52d85bc69685247ddbd8e8fcf3709b50bf8ee8b0df3bf69b7b49"
+    env:
+      TZ: Europe/Warsaw
     podSecurityContext:
       supplementalGroups:
       - 1000
       - 1002
-    env:
-      TZ: Europe/Warsaw
     persistence:
       config:
         enabled: true
         type: "pvc"
-        existingClaim: "tdarr-config"
-      media:
+        existingClaim: "flood-config"
+      downloads:
         enabled: true
         type: "pvc"
-        existingClaim: "nfs-media-pvc"
-      data:
-        enabled: true
-        type: "pvc"
-        existingClaim: "tdarr-database"
+        existingClaim: "nfs-downloads-pvc"
     ingress:
       main:
         enabled: true
@@ -51,14 +41,14 @@ spec:
         annotations:
           cert-manager.io/cluster-issuer: "letsencrypt-production"
           hajimari.io/enable: "true"
-          hajimari.io/icon: "television-classic"
+          hajimari.io/icon: "download"
           traefik.ingress.kubernetes.io/router.entrypoints: "websecure"
         hosts:
-          - host: "tdarr.${SECRET_DOMAIN}"
+          - host: "torrent.${SECRET_DOMAIN}"
             paths:
               - path: /
                 pathType: Prefix
         tls:
           - hosts:
-              - "tdarr.${SECRET_DOMAIN}"
-            secretName: "tdarr-tls"
+              - "torrent.${SECRET_DOMAIN}"
+            secretName: "flood-tls"
