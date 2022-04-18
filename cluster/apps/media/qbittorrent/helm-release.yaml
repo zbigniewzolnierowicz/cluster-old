@@ -23,7 +23,6 @@ spec:
       TZ: Europe/Warsaw
     podSecurityContext:
       supplementalGroups:
-      - 1000
       - 1002
     persistence:
       config:
