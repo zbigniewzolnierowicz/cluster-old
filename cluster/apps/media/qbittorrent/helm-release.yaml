@@ -1,15 +1,15 @@
 apiVersion: helm.toolkit.fluxcd.io/v2beta1
 kind: HelmRelease
 metadata:
-  name: flood
+  name: qbittorrent
   namespace: media
 spec:
   interval: 5m
   chart:
     spec:
       # renovate: registryUrl=https://k8s-at-home.com/charts/
-      chart: rtorrent-flood
-      version: '9.2.0'
+      chart: qbittorrent
+      version: '13.3.0'
       sourceRef:
         kind: HelmRepository
         name: k8s-at-home-charts
@@ -17,8 +17,8 @@ spec:
       interval: 1m
   values:
     image:
-      repository: "jesec/rtorrent-flood"
-      tag: "latest@sha256:f0c894ec459e52d85bc69685247ddbd8e8fcf3709b50bf8ee8b0df3bf69b7b49"
+      repository: ghcr.io/k8s-at-home/qbittorrent
+      tag: v4.4.2
     env:
       TZ: Europe/Warsaw
     podSecurityContext:
@@ -29,7 +29,7 @@ spec:
       config:
         enabled: true
         type: "pvc"
-        existingClaim: "flood-config"
+        existingClaim: "qbittorrent-config"
       downloads:
         enabled: true
         type: "pvc"
@@ -51,4 +51,4 @@ spec:
         tls:
           - hosts:
               - "torrent.${SECRET_DOMAIN}"
-            secretName: "flood-tls"
+            secretName: "qbittorrent-tls"
