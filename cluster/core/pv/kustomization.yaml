@@ -5,3 +5,4 @@ resources:
   - media.yaml
   - transcode.yaml
   - minecraft.yaml
+  - new-media.yaml
