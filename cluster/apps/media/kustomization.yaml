@@ -4,6 +4,6 @@ resources:
   - plex
   - prowlarr
   - sonarr
-  # - radarr
-  # - lidarr
+  - radarr
+  - lidarr
   - qbittorrent
