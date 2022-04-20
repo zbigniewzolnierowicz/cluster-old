@@ -77,7 +77,7 @@ spec:
       enabled: true
       persistence:
         enabled: true
-        existingClaim: authentik-postgresql
+        existingClaim: authentik-postgres
       postgresqlUsername: authentik
       postgresqlDatabase: authentik
       postgresqlPassword: ${SECRET_AUTHENTIK_POSTGRES_PASSWORD}
