@@ -8,3 +8,4 @@ resources:
   - media.yaml
   - monitoring.yaml
   - games.yaml
+  - security.yaml

@@ -7,4 +7,5 @@ resources:
   - networking
   - system-upgrade
   - media
+  - security
   # - games
