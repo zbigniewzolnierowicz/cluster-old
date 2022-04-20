@@ -20,8 +20,6 @@ spec:
     image:
       repository: ghcr.io/goauthentik/server
       tag: 2022.4.1
-    nodeSelector: 
-      worker: yes
     ingress:
       enabled: true
       ingressClassName: "traefik"
@@ -63,6 +61,7 @@ spec:
           secret_key: "${SECRET_MINIO_SECRET_KEY}"
           bucket: authentik
           host: http://${TRUENAS_ADDR}
+          insecure_skip_verify: true
       redis:
         host: '{{ .Release.Name }}-redis-master'
         password: ${SECRET_AUTHENTIK_REDIS_PASSWORD}
