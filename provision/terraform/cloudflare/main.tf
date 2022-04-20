@@ -231,7 +231,7 @@ resource "cloudflare_record" "tdarr" {
 }
 
 resource "cloudflare_record" "authentik" {
-  name    = "id"
+  name    = "auth"
   zone_id = lookup(data.cloudflare_zones.domain.zones[0], "id")
   value   = "ipv4.${data.sops_file.cloudflare_secrets.data["cloudflare_domain"]}"
   proxied = false

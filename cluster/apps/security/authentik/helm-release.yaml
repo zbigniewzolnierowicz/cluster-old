@@ -29,14 +29,14 @@ spec:
         hajimari.io/icon: "view-dashboard"
         traefik.ingress.kubernetes.io/router.entrypoints: "websecure"
       hosts:
-        - host: "id.${SECRET_DOMAIN}"
+        - host: "auth.${SECRET_DOMAIN}"
           paths:
             - path: /
               pathType: Prefix
       tls:
         - secretName: "authentik-tls"
           hosts:
-            - "id.${SECRET_DOMAIN}"
+            - "auth.${SECRET_DOMAIN}"
     authentik:
       email:
         host: "${SECRET_SMTP}"
