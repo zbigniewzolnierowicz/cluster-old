@@ -306,3 +306,7 @@ If you plan on exposing your ingress to the world from your home. Checkout [our 
 ## :handshake:&nbsp; Thanks
 
 Big shout out to all the authors and contributors to the projects that we are using in this repository.
+
+## Authentik links
+
+- [Enrollment](https://auth.notdead.cafe/if/flow/default-enrollment-flow/)
