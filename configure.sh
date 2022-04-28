@@ -157,7 +157,7 @@ verify_binaries() {
     _has_binary "jq"
     _has_binary "sops"
     _has_binary "ssh"
-    _has_binary "task"
+    _has_binary "go-task"
     _has_binary "terraform"
 }
 
