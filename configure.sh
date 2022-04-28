@@ -34,6 +34,10 @@ main() {
         verify_age
         verify_git_repository
         verify_cloudflare
+        verify_passwords
+        verify_minio
+        verify_smtp
+        verify_authentik
         success
     else
         # sops configuration file
@@ -252,6 +256,28 @@ verify_ansible_hosts() {
             exit 1
         fi
     done
+}
+
+verify_passwords() {
+    _has_envar "BOOTSTRAP_GRAFANA_PASSWORD"
+    _has_envar "BOOTSTRAP_TRANSMISSION_PASSWORD"
+}
+
+verify_minio() {
+    _has_envar "BOOTSTRAP_MINIO_ACCESS_KEY"
+    _has_envar "BOOTSTRAP_MINIO_SECRET_KEY"
+}
+
+verify_smtp() {
+    _has_envar "BOOTSTRAP_SMTP"
+    _has_envar "BOOTSTRAP_SMTP_USER"
+    _has_envar "BOOTSTRAP_SMTP_PASSWORD"
+}
+
+verify_authentik() {
+    _has_envar "BOOTSTRAP_AUTHENTIK_REDIS_PASSWORD"
+    _has_envar "BOOTSTRAP_AUTHENTIK_POSTGRES_PASSWORD"
+    _has_envar "BOOTSTRAP_AUTHENTIK_SECRET_KEY"
 }
 
 success() {
