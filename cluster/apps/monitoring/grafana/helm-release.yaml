@@ -88,6 +88,11 @@ spec:
           gnetId: 1860
           revision: 26
           datasource: Prometheus
+        # Ref: https://grafana.com/grafana/dashboards/10000
+        cluster-monitoring:
+          gnetId: 10000
+          revision: 1
+          datasource: Prometheus
     sidecar:
       dashboards:
         enabled: true
