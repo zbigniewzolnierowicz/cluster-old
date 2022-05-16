@@ -88,10 +88,10 @@ spec:
           gnetId: 11074
           revision: 9
           datasource: Prometheus
-        # Ref: https://grafana.com/grafana/dashboards/10000
+        # Ref: https://grafana.com/grafana/dashboards/315
         cluster-monitoring:
-          gnetId: 10000
-          revision: 1
+          gnetId: 315
+          revision: 3
           datasource: Prometheus
         flux-cluster:
           url: https://raw.githubusercontent.com/fluxcd/flux2/main/manifests/monitoring/grafana/dashboards/cluster.json
