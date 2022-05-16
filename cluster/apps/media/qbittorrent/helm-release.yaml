@@ -51,3 +51,11 @@ spec:
           - hosts:
               - "torrent.${SECRET_DOMAIN}"
             secretName: "qbittorrent-tls"
+    resources:
+      requests:
+        gpu.intel.com/i915: 1
+        cpu: 200m
+        memory: 256Mi
+      limits:
+        gpu.intel.com/i915: 1
+        memory: 4096Mi

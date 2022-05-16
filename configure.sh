@@ -182,6 +182,7 @@ verify_metallb() {
     _has_valid_ip "${ip_floor}" "BOOTSTRAP_METALLB_LB_RANGE"
     _has_valid_ip "${ip_ceil}" "BOOTSTRAP_METALLB_LB_RANGE"
     _has_valid_ip "${BOOTSTRAP_METALLB_TRAEFIK_ADDR}" "BOOTSTRAP_METALLB_TRAEFIK_ADDR"
+    _has_valid_ip "${BOOTSTRAP_METALLB_PLEX_ADDR}" "BOOTSTRAP_METALLB_PLEX_ADDR"
 }
 
 verify_git_repository() {
