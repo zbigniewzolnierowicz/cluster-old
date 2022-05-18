@@ -4,18 +4,18 @@ metadata:
   name: zed-homepage
   namespace: default
   labels:
-    name: zed-homepage
+    app.kubernetes.io/name: zed-homepage
 spec:
   selector:
     matchLabels:
-      name: zed-homepage
+      app.kubernetes.io/name: zed-homepage
   replicas: 1
   template:
     metadata:
       name: zed-homepage
       namespace: default
       labels:
-        name: zed-homepage
+        app.kubernetes.io/name: zed-homepage
     spec:
       containers:
         - name: homepage
