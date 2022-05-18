@@ -20,7 +20,7 @@ spec:
       containers:
         - name: homepage
           # renovate: registryUrl=https://ghcr.io/zbigniewzolnierowicz/blog
-          image: ghcr.io/zbigniewzolnierowicz/blog:1652899923
+          image: ghcr.io/zbigniewzolnierowicz/blog:1652901436
           resources:
             limits:
               memory: 256M
