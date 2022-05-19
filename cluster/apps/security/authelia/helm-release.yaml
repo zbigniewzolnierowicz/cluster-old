@@ -36,7 +36,7 @@ spec:
         secret: authelia-tls
       traefikCRD:
         enabled: true
-        disableIngressRoute: false
+        disableIngressRoute: true
         sticky: false
         middlewares:
           auth:
