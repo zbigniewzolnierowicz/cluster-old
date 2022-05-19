@@ -48,6 +48,7 @@ spec:
           hajimari.io/enable: "true"
           hajimari.io/icon: "filmstrip"
           traefik.ingress.kubernetes.io/router.entrypoints: "websecure"
+          traefik.ingress.kubernetes.io/router.middlewares: security-chain-authelia-auth@kubernetescrd
         hosts:
           - host: "radarr.${SECRET_DOMAIN}"
             paths:
@@ -64,6 +65,7 @@ spec:
         annotations:
           cert-manager.io/cluster-issuer: "letsencrypt-production"
           traefik.ingress.kubernetes.io/router.entrypoints: "websecure"
+          traefik.ingress.kubernetes.io/router.middlewares: security-chain-authelia-auth@kubernetescrd
         hosts:
           - host: "radarr.${SECRET_DOMAIN}"
             paths:

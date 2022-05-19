@@ -42,6 +42,7 @@ spec:
           hajimari.io/enable: "true"
           hajimari.io/icon: "download"
           traefik.ingress.kubernetes.io/router.entrypoints: "websecure"
+          traefik.ingress.kubernetes.io/router.middlewares: security-chain-authelia-auth@kubernetescrd
         hosts:
           - host: "torrent.${SECRET_DOMAIN}"
             paths:
