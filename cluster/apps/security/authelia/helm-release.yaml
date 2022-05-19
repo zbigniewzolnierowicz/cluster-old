@@ -20,18 +20,36 @@ spec:
     domain: ${SECRET_DOMAIN}
     ingress:
       enabled: true
-      ingressClassName: "traefik"
+      className: "traefik"
       annotations:
         cert-manager.io/cluster-issuer: "letsencrypt-production"
-        hajimari.io/enable: "true"
-        hajimari.io/icon: "view-dashboard"
+        kubernetes.io/tls-acme: "true"
         traefik.ingress.kubernetes.io/router.entrypoints: "websecure"
-      hosts:
-        - "authelia.${SECRET_DOMAIN}"
+      certManager: true
+      rewriteTarget: true
+
+      ## Subdomain is the only thing required since we specify the domain as part of the root values of the chart.
+      ## Example: To get Authelia to listen on https://auth.example.com specify 'auth' for ingress.subdomain,
+      ## and specify example.com for the domain.
+      subdomain: auth
+
       tls:
-        - hosts:
-            - "authelia.${SECRET_DOMAIN}"
-          secretName: "authelia-tls"
+        enabled: true
+        secret: authelia-tls
+
+      traefikCRD:
+        enabled: true
+        disableIngressRoute: false
+        sticky: false
+
+        middlewares:
+          auth:
+            # nameOverride: authelia-auth
+            authResponseHeaders:
+            - Remote-User
+            - Remote-Name
+            - Remote-Email
+            - Remote-Groups
 
     pod:
       # Must be Deployment, DaemonSet, or StatefulSet.
