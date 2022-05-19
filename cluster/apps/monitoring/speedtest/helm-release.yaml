@@ -9,17 +9,25 @@ spec:
   chart:
     spec:
       # renovate: registryUrl=https://k8s-at-home.com/charts/
-      chart: speedtest-prometheus
-      version: 2.2.1
+      chart: speedtest-exporter
+      version: 5.3.3
       sourceRef:
         kind: HelmRepository
         name: k8s-at-home-charts
         namespace: flux-system
-      interval: 1m
-  rollback:
-    timeout: 10m
-    recreate: true
-    cleanupOnFail: true
+      interval: 5m
   values:
-    serviceMonitor:
-      enabled: false
+    image:
+      repository: ghcr.io/miguelndecarvalho/speedtest-exporter
+      tag: v3.5.1
+    metrics:
+      enabled: true
+      serviceMonitor:
+        interval: 60m
+        scrapeTimeout: 1m
+      prometheusRule:
+        enabled: false
+        downloadLimit: 200
+        uploadLimit: 25
+        pingLimit: 30
+        jitterLimit: 35
