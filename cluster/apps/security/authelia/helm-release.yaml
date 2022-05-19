@@ -27,21 +27,17 @@ spec:
         traefik.ingress.kubernetes.io/router.entrypoints: "websecure"
       certManager: true
       rewriteTarget: true
-
       ## Subdomain is the only thing required since we specify the domain as part of the root values of the chart.
       ## Example: To get Authelia to listen on https://auth.example.com specify 'auth' for ingress.subdomain,
       ## and specify example.com for the domain.
       subdomain: auth
-
       tls:
         enabled: true
         secret: authelia-tls
-
       traefikCRD:
         enabled: true
         disableIngressRoute: false
         sticky: false
-
         middlewares:
           auth:
             # nameOverride: authelia-auth
@@ -50,14 +46,12 @@ spec:
             - Remote-Name
             - Remote-Email
             - Remote-Groups
-
     pod:
       # Must be Deployment, DaemonSet, or StatefulSet.
       kind: DaemonSet
       env:
         - name: TZ
           value: Europe/Warsaw
-
       extraVolumeMounts:
         - name: config-custom
           mountPath: /config
@@ -68,13 +62,11 @@ spec:
             items:
               - key: users_database.yml
                 path: users_database.yml
-
       resources:
         requests:
           cpu: 500m
           memory: 1500Mi
         limits: {}
-
     ##
     ## Authelia Config Map Generator
     ##
@@ -92,19 +84,16 @@ spec:
           enabled: true
           password:
             algorithm: argon2id
-
       access_control:
         ## Default policy can either be 'bypass', 'one_factor', 'two_factor' or 'deny'. It is the policy applied to any
         ## resource if there is no policy to be applied to the user.
         default_policy: deny
-
         networks:
           - name: private
             networks:
               - 10.0.0.0/8
               - 172.16.0.0/12
               - 192.168.0.0/16
-
         rules:
           # bypass Authelia
           - domain:
@@ -130,7 +119,6 @@ spec:
               - "^/(.*)/api([/?].*)?$"
               - "^/static([/?].*)?$"
               - "^/manifest[.]json$"
-
           # Deny admin services to users
           - domain:
               - alert-manager.${SECRET_DOMAIN}
@@ -140,7 +128,6 @@ spec:
               - goldilocks.${SECRET_DOMAIN}
             subject: ["group:users"]
             policy: deny
-
           # One factor auth for LAN
           - domain:
               - "*.${SECRET_DOMAIN}"
@@ -148,25 +135,20 @@ spec:
             subject: ["group:admins", "group:users"]
             networks:
               - private
-
           # Two factors auth for WAN
           - domain:
               - "*.${SECRET_DOMAIN}"
             subject: ["group:admins", "group:users"]
             policy: two_factor
-
       session:
         redis:
           enabled: true
           enabledSecret: true
-          username: "user"
           host: redis-headless
-
       storage:
         postgres:
           enabled: true
           host: postgresql
-
       notifier:
         smtp:
           enabled: true
@@ -190,7 +172,7 @@ spec:
     secret:
       storage:
         key: STORAGE_PASSWORD
-        value: "${SECRET_AUTHELIA_REDIS_PASSWORD}"
+        value: "${SECRET_AUTHELIA_POSTGRES_PASSWORD}"
         filename: STORAGE_PASSWORD
       jwt:
         key: JWT_TOKEN
@@ -198,7 +180,7 @@ spec:
         filename: JWT_TOKEN
       redis:
         key: REDIS_PASSWORD
-        value: "${SECRET_REDIS_PASSWORD}"
+        value: "${SECRET_AUTHELIA_REDIS_PASSWORD}"
         filename: REDIS_PASSWORD
       smtp:
         key: SMTP_PASSWORD
