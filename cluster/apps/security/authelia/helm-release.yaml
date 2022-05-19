@@ -159,7 +159,8 @@ spec:
         redis:
           enabled: true
           enabledSecret: true
-          host: redis
+          username: "user"
+          host: redis-headless
 
       storage:
         postgres:
