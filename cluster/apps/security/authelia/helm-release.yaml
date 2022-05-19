@@ -84,6 +84,12 @@ spec:
           enabled: true
           password:
             algorithm: argon2id
+      duo_api:
+        disable: false
+        hostname: ${SECRET_AUTHELIA_DUO_API_HOSTNAME}
+        integration_key: ${SECRET_AUTHELIA_DUO_INTEGRATION_KEY}
+        secret_key: ${SECRET_AUTHELIA_DUO_SECRET_KEY}
+        enable_self_enrollment: true
       access_control:
         ## Default policy can either be 'bypass', 'one_factor', 'two_factor' or 'deny'. It is the policy applied to any
         ## resource if there is no policy to be applied to the user.
