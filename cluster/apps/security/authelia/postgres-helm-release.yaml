@@ -21,6 +21,9 @@ spec:
       tag: 14.2.0-debian-10-r13
       pullPolicy: IfNotPresent
     auth:
+      username: authelia
+      database: authelia
+      password: ${SECRET_AUTHELIA_POSTGRES_PASSWORD}
       postgresPassword: ${SECRET_AUTHELIA_POSTGRES_PASSWORD}
     persistence:
       enabled: true
