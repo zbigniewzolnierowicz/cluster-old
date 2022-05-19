@@ -9,7 +9,8 @@ data:
     users:
       zed:
         displayname: "Zed"
-        password: "${SECRET_AUTHELIA_USER_DANNY_PASSWORD}"
-        email: ${BOOTSTRAP_CLOUDFLARE_EMAIL}
+        password: "${SECRET_AUTHELIA_USER_ZED_PASSWORD}"
+        email: ${SECRET_CLOUDFLARE_EMAIL}
         groups:
           - admins
+          - users
