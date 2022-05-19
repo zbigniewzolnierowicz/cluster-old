@@ -22,3 +22,19 @@ spec:
     - hosts:
         - notdead.cafe
       secretName: zed-homepage-tls
+---
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  labels:
+    app.kubernetes.io/name: zed-homepage
+  name: zed-homepage-tls
+  namespace: default
+spec:
+  dnsNames:
+    - notdead.cafe
+  issuerRef:
+    group: cert-manager.io
+    kind: ClusterIssuer
+    name: letsencrypt-production
+  secretName: zed-homepage-tls
