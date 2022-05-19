@@ -27,3 +27,4 @@ spec:
       postgresPassword: ${SECRET_AUTHELIA_POSTGRES_PASSWORD}
     persistence:
       enabled: true
+      existingClaim: plex-data
