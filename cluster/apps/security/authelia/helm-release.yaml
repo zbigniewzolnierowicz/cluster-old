@@ -159,12 +159,12 @@ spec:
         redis:
           enabled: true
           enabledSecret: true
-          host: redis.databases.svc.cluster.local
+          host: authelia-redis
 
       storage:
         postgres:
           enabled: true
-          host: postgresql.databases.svc.cluster.local
+          host: authelia-postgresql
 
       notifier:
         smtp:
@@ -207,14 +207,3 @@ spec:
         key: STORAGE_ENCRYPTION_KEY
         value: "${SECRET_AUTHELIA_STORAGE_ENCRYPTION_KEY}"
         filename: STORAGE_ENCRYPTION_KEY
-
-  postRenderers:
-    - kustomize:
-        patchesJson6902:
-          - target:
-              kind: Ingress
-              name: authelia
-            patch:
-              - op: add
-                path: /spec/ingressClassName
-                value: nginx
