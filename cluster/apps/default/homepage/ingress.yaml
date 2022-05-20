@@ -4,7 +4,9 @@ metadata:
   name: zed-homepage
   namespace: default
   labels:
-    app.kubernetes.io/name: plex
+    app.kubernetes.io/name: zed-homepage
+  annotations:
+    traefik.ingress.kubernetes.io/router.entrypoints: "websecure"
 spec:
   ingressClassName: traefik
   rules:
