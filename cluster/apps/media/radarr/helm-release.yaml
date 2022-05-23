@@ -75,3 +75,9 @@ spec:
           - hosts:
               - "radarr.${SECRET_DOMAIN}"
             secretName: "radarr-tls"
+    resources:
+      requests:
+        cpu: 100m
+        memory: 250Mi
+      limits:
+        memory: 2000Mi

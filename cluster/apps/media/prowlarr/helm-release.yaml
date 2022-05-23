@@ -73,3 +73,9 @@ spec:
           - hosts:
               - "prowlarr.${SECRET_DOMAIN}"
             secretName: "prowlarr-tls"
+    resources:
+      requests:
+        cpu: 100m
+        memory: 250Mi
+      limits:
+        memory: 2000Mi
