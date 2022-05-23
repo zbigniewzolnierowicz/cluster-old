@@ -238,3 +238,21 @@ resource "cloudflare_record" "authelia" {
   type    = "CNAME"
   ttl     = 1
 }
+
+resource "cloudflare_record" "netlify_homepage" {
+  name    = ""
+  zone_id = lookup(data.cloudflare_zones.domain.zones[0], "id")
+  value   = "zbgnwpage.netlify.app."
+  proxied = false
+  type    = "CNAME"
+  ttl     = 1
+}
+
+resource "cloudflare_record" "netlify_homepage_www" {
+  name    = "www"
+  zone_id = lookup(data.cloudflare_zones.domain.zones[0], "id")
+  value   = "zbgnwpage.netlify.app."
+  proxied = false
+  type    = "CNAME"
+  ttl     = 1
+}
