@@ -37,7 +37,6 @@ main() {
         verify_passwords
         verify_minio
         verify_smtp
-        verify_authentik
         success
     else
         # sops configuration file
@@ -161,7 +160,7 @@ verify_binaries() {
     _has_binary "jq"
     _has_binary "sops"
     _has_binary "ssh"
-    _has_binary "go-task"
+    _has_binary "task"
     _has_binary "terraform"
 }
 
@@ -273,12 +272,6 @@ verify_smtp() {
     _has_envar "BOOTSTRAP_SMTP"
     _has_envar "BOOTSTRAP_SMTP_USER"
     _has_envar "BOOTSTRAP_SMTP_PASSWORD"
-}
-
-verify_authentik() {
-    _has_envar "BOOTSTRAP_AUTHENTIK_REDIS_PASSWORD"
-    _has_envar "BOOTSTRAP_AUTHENTIK_POSTGRES_PASSWORD"
-    _has_envar "BOOTSTRAP_AUTHENTIK_SECRET_KEY"
 }
 
 success() {
