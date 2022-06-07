@@ -9,3 +9,4 @@ resources:
   - monitoring.yaml
   - games.yaml
   - security.yaml
+  - velero.yaml
