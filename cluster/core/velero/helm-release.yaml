@@ -62,10 +62,19 @@ spec:
       serviceMonitor:
         enabled: true
     snapshotsEnabled: true
-    deployRestic: false
+    deployRestic: true
     upgradeCRDs: false
-    schedules:
-      daily-backup:
-        schedule: "0 6 * * *"
-        template:
-          ttl: "120h"
+    restic:
+      podVolumePath: /var/lib/kubelet/pods
+      privileged: false
+      tolerations:
+        - key: "arm"
+          operator: "Exists"
+        - key: "node-role.kubernetes.io/master"
+          operator: "Exists"
+      resources:
+        requests:
+          memory: 200Mi
+          cpu: 15m
+        limits:
+          memory: 3000Mi
