@@ -26,6 +26,8 @@ spec:
       TZ: Europe/Warsaw
     metrics:
       enabled: false
+    podAnnotations:
+      backup.velero.io/backup-volumes: config
     persistence:
       config:
         enabled: true

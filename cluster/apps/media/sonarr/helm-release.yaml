@@ -26,6 +26,8 @@ spec:
       - 1002
     metrics:
       enabled: false
+    podAnnotations:
+      backup.velero.io/backup-volumes: config
     persistence:
       config:
         enabled: true
