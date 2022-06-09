@@ -91,11 +91,20 @@ resource "cloudflare_record" "ipv4" {
   ttl     = 1
 }
 
-resource "cloudflare_record" "root" {
+resource "cloudflare_record" "homepage" {
   name    = data.sops_file.cloudflare_secrets.data["cloudflare_domain"]
   zone_id = lookup(data.cloudflare_zones.domain.zones[0], "id")
-  value   = "zbgnwpage.netlify.app."
-  proxied = true
+  value   = "76.76.21.21"
+  proxied = false
+  type    = "A"
+  ttl     = 1
+}
+
+resource "cloudflare_record" "homepage_www" {
+  name    = "www"
+  zone_id = lookup(data.cloudflare_zones.domain.zones[0], "id")
+  value   = "cname.vercel-dns.com"
+  proxied = false
   type    = "CNAME"
   ttl     = 1
 }
@@ -234,15 +243,6 @@ resource "cloudflare_record" "authelia" {
   name    = "auth"
   zone_id = lookup(data.cloudflare_zones.domain.zones[0], "id")
   value   = "ipv4.${data.sops_file.cloudflare_secrets.data["cloudflare_domain"]}"
-  proxied = false
-  type    = "CNAME"
-  ttl     = 1
-}
-
-resource "cloudflare_record" "netlify_homepage_www" {
-  name    = "www"
-  zone_id = lookup(data.cloudflare_zones.domain.zones[0], "id")
-  value   = "zbgnwpage.netlify.app."
   proxied = false
   type    = "CNAME"
   ttl     = 1
