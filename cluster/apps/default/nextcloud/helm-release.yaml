@@ -46,6 +46,8 @@ spec:
         usernameKey: username
         passwordKey: password
         tokenKey: serverinfo_token
+        smtpUsernameKey: smtp_username
+        smtpPasswordKey: smtp_password
       update: 0
       mail:
         enabled: true
@@ -56,8 +58,6 @@ spec:
           secure: ssl
           port: 465
           authtype: LOGIN
-          name: ${SECRET_SMTP_USER}
-          password: ${SECRET_SMTP_PASSWORD}
     persistence:
       enabled: true
       storageClass: "nfs-client"
