@@ -64,6 +64,11 @@ spec:
     snapshotsEnabled: true
     deployRestic: true
     upgradeCRDs: false
+    schedules:
+      daily-backup:
+        schedule: "0 0 * * 5"
+        template:
+          ttl: "120h"
     restic:
       podVolumePath: /var/lib/kubelet/pods
       privileged: false
