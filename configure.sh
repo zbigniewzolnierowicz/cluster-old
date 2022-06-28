@@ -62,6 +62,10 @@ main() {
         # ansible
         envsubst < "${PROJECT_DIR}/tmpl/ansible/kube-vip.yml" \
             > "${PROJECT_DIR}/provision/ansible/inventory/group_vars/kubernetes/kube-vip.yml"
+        # nextcloud
+        envsubst < "${PROJECT_DIR}/tmpl/cluster/nextcloud-secret.sops.yaml" \
+            > "${PROJECT_DIR}/cluster/apps/default/nextcloud/nextcloud-secret.sops.yaml"
+        sops --encrypt --in-place "${PROJECT_DIR}/cluster/apps/default/nextcloud/nextcloud-secret.sops.yaml"
         generate_ansible_hosts
         generate_ansible_host_secrets
     fi

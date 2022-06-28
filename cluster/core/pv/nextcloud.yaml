@@ -1,0 +1,29 @@
+---
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: nfs-nextcloud-pvc
+  namespace: default
+spec:
+  accessModes:
+    - ReadWriteMany
+  resources:
+    requests:
+      storage: 4Ti
+  volumeName: nfs-nextcloud-pv
+---
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: nfs-nextcloud-pv
+  namespace: default
+spec:
+  storageClassName: local-path
+  capacity:
+    storage: 4Ti
+  nfs:
+    server: "${TRUENAS_ADDR}"
+    path: "/mnt/eldorado/nextcloud"
+  accessModes:
+    - ReadWriteMany
+  persistentVolumeReclaimPolicy: Retain
