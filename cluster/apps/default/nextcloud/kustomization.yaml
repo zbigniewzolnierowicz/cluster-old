@@ -1,5 +1,8 @@
 apiVersion: kustomize.config.k8s.io/v1beta1
 kind: Kustomization
 resources:
+  - nextcloud-db-secret.sops.yaml
   - nextcloud-secret.sops.yaml
+  - db-data-pvc.yaml
+  - db-helm-release.yaml
   - helm-release.yaml

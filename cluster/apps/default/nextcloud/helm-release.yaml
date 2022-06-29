@@ -73,3 +73,28 @@ spec:
         repository: xperimental/nextcloud-exporter
         tag: 0.5.1
         pullPolicy: IfNotPresent
+    redis:
+      enabled: true
+      password: ${SECRET_NEXTCLOUD_REDIS_PASSWORD}
+      master:
+        persistence:
+          enabled: false
+      replica:
+        persistence:
+          enabled: false
+    internalDatabase:
+      enabled: false
+    externalDatabase:
+      enabled: true
+      type: postgres
+      host: nextcloud-db
+      existingSecret:
+        enabled: true
+        secretName: nextcloud-db-secret
+        usernameKey: username
+        passwordKey: password
+        databaseKey: database
+    livenessProbe:
+      enabled: false
+    readinessProbe:
+      enabled: false

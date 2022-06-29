@@ -66,6 +66,9 @@ main() {
         envsubst < "${PROJECT_DIR}/tmpl/cluster/nextcloud-secret.sops.yaml" \
             > "${PROJECT_DIR}/cluster/apps/default/nextcloud/nextcloud-secret.sops.yaml"
         sops --encrypt --in-place "${PROJECT_DIR}/cluster/apps/default/nextcloud/nextcloud-secret.sops.yaml"
+        envsubst < "${PROJECT_DIR}/tmpl/cluster/nextcloud-db-secret.sops.yaml" \
+            > "${PROJECT_DIR}/cluster/apps/default/nextcloud/nextcloud-db-secret.sops.yaml"
+        sops --encrypt --in-place "${PROJECT_DIR}/cluster/apps/default/nextcloud/nextcloud-db-secret.sops.yaml"
         generate_ansible_hosts
         generate_ansible_host_secrets
     fi
