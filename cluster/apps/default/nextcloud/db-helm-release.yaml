@@ -21,7 +21,12 @@ spec:
       tag: 14.2.0-debian-10-r13
       pullPolicy: IfNotPresent
     auth:
+      username: ${SECRET_NEXTCLOUD_POSTGRES_USER}
+      database: ${SECRET_NEXTCLOUD_POSTGRES_DATABASE}
       existingSecret: nextcloud-db-secret
+      secretKeys:
+        adminPasswordKey: "postgres-password"
+        userPasswordKey: "password"
     persistence:
       enabled: true
       existingClaim: nextcloud-db-data
