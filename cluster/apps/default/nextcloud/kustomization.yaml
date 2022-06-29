@@ -5,4 +5,5 @@ resources:
   - nextcloud-secret.sops.yaml
   - db-data-pvc.yaml
   - db-helm-release.yaml
+  - nextcloud-traefik-middleware.yaml
   - helm-release.yaml

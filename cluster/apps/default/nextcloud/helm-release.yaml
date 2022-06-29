@@ -29,6 +29,7 @@ spec:
         cert-manager.io/cluster-issuer: "letsencrypt-production"
         hajimari.io/enable: "true"
         traefik.ingress.kubernetes.io/router.entrypoints: "websecure"
+        traefik.ingress.kubernetes.io/router.middlewares: "nextcloud-traefik-middleware@kubernetescrd"
       hosts:
         - host: "cloud.${SECRET_DOMAIN}"
           paths:
@@ -58,6 +59,26 @@ spec:
           secure: ssl
           port: 465
           authtype: LOGIN
+      configs:
+        proxy.config.php: |-
+          <?php
+          $CONFIG = array (
+            'trusted_proxies' => 
+            array(
+              0 => '${METALLB_TRAEFIK_ADDR}',
+            ),
+            'forwarded_for_headers' => 
+            array (
+              0 => 'HTTP_X_FORWARDED_FOR',
+            ),
+          );
+        gitops.config.php: |-
+          <?php
+          $CONFIG = array (
+            'appstoreenabled' => true,
+            #'appstoreurl' => 'https://apps.nextcloud.com/api/v0',
+            'mail_domain' => '${SECRET_DOMAIN}',
+          );
     persistence:
       enabled: true
       storageClass: "nfs-client"
