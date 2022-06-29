@@ -29,7 +29,7 @@ spec:
         cert-manager.io/cluster-issuer: "letsencrypt-production"
         hajimari.io/enable: "true"
         traefik.ingress.kubernetes.io/router.entrypoints: "websecure"
-        traefik.ingress.kubernetes.io/router.middlewares: "nextcloud-traefik-middleware@kubernetescrd"
+        # traefik.ingress.kubernetes.io/router.middlewares: "nextcloud-traefik-middleware@kubernetescrd"
       hosts:
         - host: "cloud.${SECRET_DOMAIN}"
           paths:
