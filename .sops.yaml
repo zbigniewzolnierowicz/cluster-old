@@ -8,3 +8,6 @@ creation_rules:
     encrypted_regex: "^(data|stringData)$"
     age: >-
       age1a3n0nnyg97hethp49t7a07xk2dty4j2g4pqr6gvzhx3esrvx3f4qqmk0tc
+  - path_regex: cluster/.*\.sops.pem
+    age: >-
+      age1a3n0nnyg97hethp49t7a07xk2dty4j2g4pqr6gvzhx3esrvx3f4qqmk0tc

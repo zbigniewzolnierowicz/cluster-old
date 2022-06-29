@@ -307,6 +307,17 @@ If you plan on exposing your ingress to the world from your home. Checkout [our 
 
 Big shout out to all the authors and contributors to the projects that we are using in this repository.
 
-## Authentik links
+## Generate RSA keys for Authelia
 
-- [Enrollment](https://auth.notdead.cafe/if/flow/default-enrollment-flow/)
+```
+openssl genrsa -out ./cluster/apps/security/authelia/private.sops.pem 3072
+```
+
+```
+openssl rsa -in ./cluster/apps/security/authelia/private.sops.pem -pubout -out ./cluster/apps/security/authelia/public.sops.pem
+```
+
+```
+sops --encrypt --in-place ./cluster/apps/security/authelia/private.sops.pem
+sops --encrypt --in-place ./cluster/apps/security/authelia/public.sops.pem
+```

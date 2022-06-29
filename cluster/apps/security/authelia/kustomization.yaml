@@ -6,3 +6,9 @@ resources:
   - redis-helm-release.yaml
   - postgres-helm-release.yaml
   - helm-release.yaml
+secretGenerator:
+  - name: authelia-rsa
+    namespace: security
+    files:
+    - private.pem=./private.sops.pem
+    - public.pem=./public.sops.pem
