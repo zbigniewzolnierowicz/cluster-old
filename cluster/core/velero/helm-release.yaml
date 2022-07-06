@@ -29,6 +29,7 @@ spec:
       backupStorageLocation:
         name: default
         bucket: velero
+        accessMode: ReadOnly
         config:
           region: us-east-1
           s3ForcePathStyle: true
