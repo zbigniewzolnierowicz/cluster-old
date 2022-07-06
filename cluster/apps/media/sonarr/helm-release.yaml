@@ -50,7 +50,7 @@ spec:
           hajimari.io/enable: "true"
           hajimari.io/icon: "television-classic"
           traefik.ingress.kubernetes.io/router.entrypoints: "websecure"
-          traefik.ingress.kubernetes.io/router.middlewares: security-chain-authelia-auth@kubernetescrd
+          # traefik.ingress.kubernetes.io/router.middlewares: security-chain-authelia-auth@kubernetescrd
         hosts:
           - host: "sonarr.${SECRET_DOMAIN}"
             paths:

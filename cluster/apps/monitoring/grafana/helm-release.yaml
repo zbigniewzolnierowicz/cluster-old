@@ -127,7 +127,7 @@ spec:
         hajimari.io/enable: "true"
         hajimari.io/icon: "view-dashboard"
         traefik.ingress.kubernetes.io/router.entrypoints: "websecure"
-        traefik.ingress.kubernetes.io/router.middlewares: security-chain-authelia-auth@kubernetescrd
+        # traefik.ingress.kubernetes.io/router.middlewares: security-chain-authelia-auth@kubernetescrd
       hosts:
         - "grafana.${SECRET_DOMAIN}"
       tls:

@@ -109,7 +109,7 @@ spec:
           hajimari.io/enable: "true"
           hajimari.io/icon: "alert-circle"
           traefik.ingress.kubernetes.io/router.entrypoints: "websecure"
-          traefik.ingress.kubernetes.io/router.middlewares: security-chain-authelia-auth@kubernetescrd
+          # traefik.ingress.kubernetes.io/router.middlewares: security-chain-authelia-auth@kubernetescrd
         hosts:
           - "prometheus.${SECRET_DOMAIN}"
         tls:
