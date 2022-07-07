@@ -10,3 +10,4 @@ resources:
   - sonarr
   - radarr
   - lidarr
+  - plex
