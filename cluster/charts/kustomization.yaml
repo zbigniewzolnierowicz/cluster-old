@@ -13,3 +13,4 @@ resources:
   - stakater.yaml
   - traefik.yaml
   - weaveworks-kured.yaml
+  - nfs-subdir-external-provisioner.yaml
