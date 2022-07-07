@@ -23,7 +23,7 @@ spec:
     storage: 4Ti
   nfs:
     server: "${TRUENAS_ADDR}"
-    path: "/mnt/eldorado/media/downloads"
+    path: "${TRUENAS_BASE_URL}/media/downloads"
   accessModes:
     - ReadWriteMany
   persistentVolumeReclaimPolicy: Retain

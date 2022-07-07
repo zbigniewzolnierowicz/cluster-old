@@ -23,7 +23,7 @@ spec:
     storage: 4Ti
   nfs:
     server: "${TRUENAS_ADDR}"
-    path: "/mnt/eldorado/media/video/transcode"
+    path: "${TRUENAS_BASE_URL}/media/video/transcode"
   accessModes:
     - ReadWriteMany
   persistentVolumeReclaimPolicy: Retain
