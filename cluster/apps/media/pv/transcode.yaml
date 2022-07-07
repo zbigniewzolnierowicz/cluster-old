@@ -1,0 +1,29 @@
+---
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: nfs-transcode-pvc
+  namespace: media
+spec:
+  accessModes:
+    - ReadWriteMany
+  resources:
+    requests:
+      storage: 4Ti
+  volumeName: nfs-transcode-pv
+---
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: nfs-transcode-pv
+  namespace: media
+spec:
+  storageClassName: local-path
+  capacity:
+    storage: 4Ti
+  nfs:
+    server: "${TRUENAS_ADDR}"
+    path: "/mnt/eldorado/media/video/transcode"
+  accessModes:
+    - ReadWriteMany
+  persistentVolumeReclaimPolicy: Retain
