@@ -6,3 +6,7 @@ resources:
   - pv
   - qbittorrent
   - flood
+  - prowlarr
+  - sonarr
+  - radarr
+  - lidarr
