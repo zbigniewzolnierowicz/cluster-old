@@ -5,7 +5,7 @@ metadata:
   name: sonarr-config
   namespace: media
 spec:
-  storageClassName: nfs-client
+  storageClassName: local-path
   accessModes:
     - ReadWriteOnce
   resources:
