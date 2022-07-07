@@ -11,6 +11,7 @@ spec:
     requests:
       storage: 4Ti
   volumeName: nfs-downloads-pv
+  storageClassName: local-path
 ---
 apiVersion: v1
 kind: PersistentVolume
