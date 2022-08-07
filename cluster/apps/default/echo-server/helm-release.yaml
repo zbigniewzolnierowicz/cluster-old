@@ -9,7 +9,7 @@ spec:
   chart:
     spec:
       chart: kah-common-chart
-      version: 1.1.2
+      version: 1.2.2
       sourceRef:
         kind: HelmRepository
         name: k8s-at-home
@@ -30,7 +30,7 @@ spec:
       strategy: RollingUpdate
     image:
       repository: docker.io/jmalloc/echo-server
-      tag: 0.3.1
+      tag: 0.3.3
     service:
       main:
         ports:
