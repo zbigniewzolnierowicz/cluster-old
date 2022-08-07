@@ -31,7 +31,7 @@ spec:
 
     podSecurityContext:
       supplementalGroups:
-      - 1002
+        - 1002
 
     persistence:
       data:

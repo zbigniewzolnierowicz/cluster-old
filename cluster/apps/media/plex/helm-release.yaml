@@ -61,9 +61,9 @@ spec:
         existingClaim: "nfs-media-pvc"
     podSecurityContext:
       supplementalGroups:
-      - 44
-      - 109
-      - 1002
+        - 44
+        - 109
+        - 1002
     resources:
       requests:
         gpu.intel.com/i915: 1

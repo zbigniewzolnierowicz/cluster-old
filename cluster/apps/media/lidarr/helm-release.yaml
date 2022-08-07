@@ -21,7 +21,7 @@ spec:
       tag: v1.1.0.2621
     podSecurityContext:
       supplementalGroups:
-      - 1002
+        - 1002
     env:
       TZ: Europe/Warsaw
     metrics:

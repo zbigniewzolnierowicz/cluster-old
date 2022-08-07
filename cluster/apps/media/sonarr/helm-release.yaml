@@ -23,7 +23,7 @@ spec:
       TZ: Europe/Warsaw
     podSecurityContext:
       supplementalGroups:
-      - 1002
+        - 1002
     metrics:
       enabled: false
     podAnnotations:
